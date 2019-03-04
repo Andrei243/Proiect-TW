@@ -1,0 +1,65 @@
+<html>
+<head>
+    <title>Miscari</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="main.css"/>
+    <link rel="icon" type="image/ico" href="Pokeball.png"/>
+
+</head>
+
+<body>
+<div id="app">
+    <div id="header">
+        <h1>Pokedex</h1>
+        <nav class="mainmenu">
+            <a href="index.html">Pokemoni</a>
+            <!--   <a href="#">Cautare Pokemoni</a>  -->
+            <a href="miscari.html">Miscari</a>
+            <!--   <a href="#">Cautare Miscari</a>  -->
+            <div id="log">
+                <a href="#" onclick="negare()">Logout</a></div>        </nav>
+    </div>
+    <!--<div id="sidebar">
+      <ul class="sidemenu">
+        <li>Home</li>
+        <li><label for="F4210DB2-006F-47C9-874E-3A8B5DE715ED">Categories</label><input type="checkbox" id="F4210DB2-006F-47C9-874E-3A8B5DE715ED" /><ul>
+          <li>Category 1</li>
+          <li>Category 2</li>
+          <li>Category 3</li>
+          <li>Category 4</li>
+        </ul></li>
+        <li>Settings</li>
+        <li>Account</li>
+        <li>Logout</li>
+      </ul>
+    </div>-->
+    <div id="content">
+        <table>
+            <thead>
+            <tr>
+                <th>Nume</th>
+                <th>Tip</th>
+                <th>Categorie</th>
+                <th>Pokemoni</th>
+
+            </tr>
+            </thead>
+            <tbody id="bodytabel">
+            <tr v-for="(el, id) in moves">
+                <td>{{el.NAME}}</td>
+                <td>  {{el.TYPE}} </td>
+                <td>{{el.CAT}}</td>
+                <td> <p v-for="pok in el.pokemons">{{pok}}</p>  </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+</body>
+</html>

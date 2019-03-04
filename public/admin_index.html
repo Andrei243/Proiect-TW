@@ -1,0 +1,100 @@
+<html>
+<head>
+  <title>Admin Pokemoni</title>
+    <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="main.js"></script>
+  <link rel="stylesheet" href="main_admin.css"/>
+  <link rel="icon" type="image/ico" href="Pokeball.png"/>
+
+</head>
+
+<body>
+  <div id="app">
+    <div id="header">
+      <h1>Pokedex</h1>
+      <nav class="mainmenu">
+        <a href="admin_index.html">Pokemoni</a>
+        <a href="admin_miscari.html">Miscari</a>
+        <a href="index.html">User View</a>
+        <div id="log">
+          <a href="#" onclick="negare()">Logout</a></div>
+    </nav>
+    </div>
+    <!--<div id="sidebar">
+      <ul class="sidemenu">
+        <li>Home</li>
+        <li><label for="F4210DB2-006F-47C9-874E-3A8B5DE715ED">Categories</label><input type="checkbox" id="F4210DB2-006F-47C9-874E-3A8B5DE715ED" /><ul>
+          <li>Category 1</li>
+          <li>Category 2</li>
+          <li>Category 3</li>
+          <li>Category 4</li>
+        </ul></li>
+        <li>Settings</li>
+        <li>Account</li>
+        <li>Logout</li>
+      </ul>
+    </div>-->
+    <div id="content">
+      <table>
+        <thead>
+          <tr>
+            <th>Nume</th>
+            <th>Poza</th>
+            <th>Tip</th>
+            <th>Evolueaza din</th>
+            <th>Poate evolua in</th>
+            <th>Operatii</th>
+            <th>Miscari</th>
+            <th>Optiuni miscari</th>
+          </tr>
+        </thead>
+        <tbody id="bodytabel">
+          <tr v-for="(el, id) in pokemons"  class="linie_tabel">
+            <td v-bind:name="el.NAME">{{el.NAME}}</td>
+            <td>  <img  v-bind:alt="el.NAME" v-bind:src="el.URLIMG "  class="poze_din_tabel" > </td>
+            <td>  <p v-for="tip in el.TYPE">{{tip}}</p> </td>
+            <td>{{el.FROM}}</td>
+            <td><p v-for="pok in el.TO">{{pok}}</p> </td>
+            <td><button v-on:click="edit_pok(id)">Edit</button> <button v-on:click="remove_pok(id)">Delete</button></td>
+            <td> <span v-for="mov in el.moves"> <p>{{mov}} </p>  <button v-on:click="eliminare_moves(el.NAME,mov)"  >Elimina {{mov}}</button>  </span>   </td>
+            <td> <select class="act_mov" >  <option v-for="vars in moves" v-bind:value="vars.NAME" >{{vars.NAME}}</option>   </select>  <button v-on:click="adaugare_mov(id)" >Adaugare miscare</button> </td>
+          </tr>
+        </tbody>
+      </table>
+      <label>Nume Pokemon <input v-model="input_pok.NAME" /></label><br />
+      <label>URL Imagine <input v-model="input_pok.URLIMG" /></label><br />
+      <label>Tip pokemon <select v-model="input_pok.TYPE"  multiple>
+        <option value="Fire">Fire</option>
+        <option value="Water">Water</option>
+        <option value="Grass">Grass</option>
+        <option value="Normal">Normal</option>
+        <option value="Flying">Flying</option>
+        <option value="Fighting">Fighting</option>
+        <option value="Poison">Poison</option>
+        <option value="Ground">Ground</option>
+        <option value="Rock">Rock</option>
+        <option value="Bug">Bug</option>
+        <option value="Ghost">Ghost</option>
+        <option value="Steel">Steel</option>
+        <option value="Electric">Electric</option>
+        <option value="Psychic">Psychic</option>
+        <option value="Ice">Ice</option>
+        <option value="Dragon">Draon</option>
+        <option value="Dark">Dark</option>
+        <option value="Fairy">Fairy</option>
+      </select></label><br />
+      <label>Evolueaza din alt pokemon? <input type="checkbox" id="involutie" onclick="myFunction()">    </label>
+      <label id="pokinvolutie" style="display:none"> Din care?
+
+        <select v-model="input_pok.FROM" >
+          <option v-for="el in pokemons"  v-bind:value="el.NAME">{{el.NAME}}</option>
+
+        </select>
+      </label>
+      <button v-on:click="commit_pok">{{(editId === null)?"Add":"Edit"}}</button>
+    </div>
+  </div>
+</body>
+</html>

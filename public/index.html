@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Pokemoni</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="main.css"/>
+    <link rel="icon" type="image/ico" href="Pokeball.png"/>
+</head>
+
+<body>
+<div id="app">
+    <div id="header">
+        <h1>Pokedex</h1>
+        <nav class="mainmenu">
+            <a href="index.html">Pokemoni</a>
+         <!--   <a href="#">Cautare Pokemoni</a>  -->
+            <a href="miscari.html">Miscari</a>
+         <!--   <a href="#">Cautare Miscari</a>  -->
+            <div id="log">
+            <a href="#" onclick="negare()">Logout</a></div>
+        </nav>
+    </div>
+    <div id="content">
+        <table>
+            <thead>
+            <tr>
+                <th>Nume</th>
+                <th>Poza</th>
+                <th>Tip</th>
+                <th>Evolueaza din</th>
+                <th>Poate evolua in</th>
+
+                <th>Miscari</th>
+
+            </tr>
+            </thead>
+            <tbody id="bodytabel">
+            <tr v-for="(el, id) in pokemons"  class="linie_tabel">
+                <td>{{el.NAME}}</td>
+                <td>  <img  v-bind:alt="el.NAME" v-bind:src="el.URLIMG "  class="poze_din_tabel" > </td>
+                <td>  <p v-for="tip in el.TYPE">{{tip}}</p> </td>
+                <td>{{el.FROM}}</td>
+                <td><p v-for="pok in el.TO">{{pok}}</p> </td>
+                <td> <p v-for="mov in el.moves">{{mov}}</p>   </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

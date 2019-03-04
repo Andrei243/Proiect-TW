@@ -1,0 +1,117 @@
+/* color palette: https://coolors.co/231f20-bb4430-7ebdc2-f3dfa2-efe6dd */
+/* css grid documentation: https://css-tricks.com/snippets/css/complete-guide-grid/ */
+
+body {
+  font-family: Helvetica;
+  margin: 0;
+
+}
+
+
+#app {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: 130px auto;
+  grid-template-areas:
+          "header header"
+          "sidebar content"
+}
+
+#header {
+  grid-area: header;
+  background-color: #EFE6DD;
+  padding: 7px;
+}
+
+#sidebar {
+  grid-area: sidebar;
+  background-color: #7EBDC2;
+}
+
+#content {
+  grid-area: content;
+  padding: 10px;
+}
+
+nav.mainmenu {
+  display: grid;
+  grid-template-columns: repeat(2 , 100px) auto;
+  grid-template-rows: auto;
+}
+
+nav.mainmenu a {
+  text-decoration: none;
+  color: #BB4430;
+  padding: 10px 10px;
+  justify-self: center;
+}
+
+nav.mainmenu div {
+  justify-self: right;
+}
+
+nav.mainmenu a:hover {
+  background-color: #F3DFA2;
+}
+
+nav.mainmenu .submenu {
+  position: absolute;
+  display: none;
+}
+
+nav.mainmenu a:hover .submenu {
+  display: block;
+}
+
+ul.sidemenu {
+  color: #231F20;
+  list-style: none;
+}
+
+ul.sidemenu li > ul {
+  display: none;
+}
+
+ul.sidemenu li>input:checked + ul {
+  display: block;
+}
+
+ul.sidemenu li>input[type="checkbox"] {
+  display: none;
+}
+
+td, th {
+  padding: 7px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td img{
+width:5em;
+height:auto;
+}
+thead tr {
+  background-color: #231F20;
+  color: #BB4430;
+}
+
+tbody > tr:nth-child(odd) {
+  background-color: #F3DFA2;
+  color: #BB4430;
+}
+
+tbody > tr:nth-child(even) {
+  background-color: #EFE6DD;
+  color: #BB4430;
+}
+
+tbody > tr:hover {
+  background-color: #7EBDC2;
+}
+
+.number {
+  text-align: right;
+}
